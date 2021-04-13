@@ -6,14 +6,14 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Car {
-    private int id, year;
-    private String brand, model, engineCapacity, hp, torque, transmission;
+    private int id;
+    private String brand, model, engineCapacity, hp, torque, transmission, year;
 
     public Car() {
 
     }
 
-    public Car(int id, int year, String brand, String model, String engineCapacity, String hp, String torque, String transmission) {
+    public Car(int id, String year, String brand, String model, String engineCapacity, String hp, String torque, String transmission) {
         this.id = id;
         this.year = year;
         this.brand = brand;
