@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cars</title>
+</head>
+<body>
+<div align="center">
+    <h1>Cars</h1>
+    <form method="get" action="search">
+        <input type="text" name="keyword"/>
+        <input type="submit" name="Search"/>
+    </form>
+    <h3>New car</h3>
+    <h3>Update Table</h3>
+    <table border="1" cellpadding="20">
+        <tr>
+            <th>ID</th>
+            <th>Brand</th>
+            <th>Model</th>
+            <th>Engine capacity</th>
+            <th>HP</th>
+            <th>Torque</th>
+            <th>Transmission</th>
+            <th>Year</th>
+            <th>Action</th>
+        </tr>
+        <tr th:each="car : ${cars}">
+            <td th:text="${car.getId}"></td>
+            <td th:text="${car.getBrand}"></td>
+            <td th:text="${car.getModel}"></td>
+            <td th:text="${car.getEngineCapacity}"></td>
+            <td th:text="${car.getHp}"></td>
+            <td th:text="${car.getTorque}"></td>
+            <td th:text="${car.getTransmission}"></td>
+            <td th:text="${car.getYear}"></td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>
