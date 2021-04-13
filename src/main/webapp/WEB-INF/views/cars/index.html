@@ -34,7 +34,13 @@
             <td th:text="${car.getTorque}"></td>
             <td th:text="${car.getTransmission}"></td>
             <td th:text="${car.getYear}"></td>
+            <td>
+                <a th:href="@{${car.getId}+'/edit'}">Edit</a>
+                <form th:method="DELETE" th:action="@{/cars/{id}(id = ${car.getId()})}">
+                    <input type="submit" value="Delete"/>
+                </form>
 
+            </td>
         </tr>
     </table>
 </div>

@@ -27,4 +27,23 @@ public class CarDAO {
         cars.add(car);
     }
 
+    public Car show(int id){
+        return cars.get(id-1);
+    }
+
+    public void update(int id, Car car){
+        Car carToBeUpdated = show(id);
+        carToBeUpdated.setBrand(car.getBrand());
+        carToBeUpdated.setModel(car.getModel());
+        carToBeUpdated.setEngineCapacity(car.getEngineCapacity());
+        carToBeUpdated.setHp(car.getHp());
+        carToBeUpdated.setTorque(car.getTorque());
+        carToBeUpdated.setTransmission(car.getTransmission());
+        carToBeUpdated.setYear(car.getYear());
+    }
+
+    public void delete(int id){
+        cars.remove(id);
+    }
+
 }

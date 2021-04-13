@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit</title>
+</head>
+<body>
+<div align="center">
+    <form th:method="PUT" th:action="@{/cars/{id}(id=${car.getId()})}" th:object="${car}">
+        <table border="0" cellpadding="5">
+            <tr>
+                <td><label for="brand">Brand:</label></td>
+                <td><input type="text" th:field="*{brand}" id="brand"/></td>
+            </tr>
+
+            <tr>
+                <td><label for="model">Model:</label></td>
+                <td><input type="text" th:field="*{model}" id="model"/></td>
+            </tr>
+
+            <tr>
+                <td><label for="engine">Engine capacity:</label></td>
+                <td><input type="text" th:field="*{engineCapacity}" id="engine"/></td>
+            </tr>
+
+            <tr>
+                <td><label for="hp">HP:</label></td>
+                <td><input type="text" th:field="*{hp}" id="hp"/></td>
+            </tr>
+
+            <tr>
+                <td><label for="torque">Torque:</label></td>
+                <td><input type="text" th:field="*{torque}" id="torque"/></td>
+            </tr>
+
+            <tr>
+                <td><label for="transmission">Transmission:</label></td>
+                <td><input type="text" th:field="*{transmission}" id="transmission"/></td>
+            </tr>
+
+            <tr>
+                <td><label for="year">Year:</label></td>
+                <td><input type="text" th:field="*{year}" id="year"/></td>
+            </tr>
+
+            <tr>
+                <td><input type="submit" value="Edit"/></td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>
