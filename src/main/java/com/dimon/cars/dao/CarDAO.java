@@ -1,55 +1,62 @@
 package com.dimon.cars.dao;
 
 import com.dimon.cars.models.Car;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
-import org.springframework.jdbc.core.JdbcTemplate;
-
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.transaction.annotation.Transactional;
 
 
 import java.util.List;
 
 @Component
+@EnableTransactionManagement
 public class CarDAO {
-    private final JdbcTemplate jdbcTemplate;
+    private final SessionFactory factory;
+
+
 
     @Autowired
-    public CarDAO(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
+    public CarDAO(SessionFactory sessionFactory) {
+        this.factory = sessionFactory;
     }
 
+    @Transactional(readOnly = true)
     public List<Car> index() {
-        return jdbcTemplate.query("select * from car", new BeanPropertyRowMapper<>(Car.class));
+        Session session = factory.getCurrentSession();
+        return session.createQuery("select p from Car p", Car.class).getResultList();
     }
 
-
+    @Transactional
     public void save(Car car) {
-        jdbcTemplate.update("insert into car (brand, model, engineCapacity, hp, torque, transmission, year) values(?,?,?,?,?,?,?)", car.getBrand(), car.getModel(),
-                car.getEngineCapacity(), car.getHp(), car.getTorque(), car.getTransmission(), car.getYear());
+        Session session = factory.getCurrentSession();
+        session.save(car);
     }
 
-
+    @Transactional(readOnly = true)
     public Car show(int id) {
-        return jdbcTemplate.queryForObject("select * from car where id = ?", new Object[]{id}, (resultSet, i) -> {
-            Car car = new Car();
-            car.setBrand(resultSet.getString("brand"));
-            car.setModel(resultSet.getString("model"));
-            car.setEngineCapacity(resultSet.getString("engineCapacity"));
-            car.setHp(resultSet.getString("hp"));
-            car.setTorque(resultSet.getString("torque"));
-            car.setTransmission(resultSet.getString("transmission"));
-            car.setYear(resultSet.getInt("year"));
-            return car;
-        });
+        Session session = factory.getCurrentSession();
+        return session.get(Car.class, id);
     }
 
-    public void update(int id, Car car) {
-        jdbcTemplate.update("update car set brand=?, model=?, engineCapacity=?, hp=?, torque=?, transmission=?, year=? where id=?", car.getBrand(), car.getModel(),
-                car.getEngineCapacity(), car.getHp(), car.getTorque(), car.getTransmission(), car.getYear(), id);
+    @Transactional
+    public void update(Car car, int id) {
+        Session session = factory.getCurrentSession();
+        Car carToBeUpdated = session.get(Car.class, id);
+        carToBeUpdated.setBrand(car.getBrand());
+        carToBeUpdated.setModel(car.getModel());
+        carToBeUpdated.setEngineCapacity(car.getEngineCapacity());
+        carToBeUpdated.setHp(car.getHp());
+        carToBeUpdated.setTorque(car.getTorque());
+        carToBeUpdated.setTransmission(car.getTransmission());
+        carToBeUpdated.setYear(car.getYear());
     }
 
+    @Transactional
     public void delete(int id) {
-        jdbcTemplate.update("delete from car where id=?", id);
+        Session session = factory.getCurrentSession();
+        session.remove(session.get(Car.class, id));
     }
 }

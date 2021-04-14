@@ -52,7 +52,7 @@ public class CarsController {
         if(bindingResult.hasErrors()){
             return "cars/edit";
         }
-        carDAO.update(id, car);
+        carDAO.update(car, id);
         return "redirect:/cars/index";
     }
 
