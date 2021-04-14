@@ -1,8 +1,7 @@
 package com.dimon.cars.models;
 
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -10,6 +9,9 @@ import javax.validation.constraints.NotEmpty;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class Car {
     private int id;
 
@@ -35,17 +37,4 @@ public class Car {
     @Max(value = 2021, message = "Car can`t have year more than 2021")
     private int year;
 
-    public Car() {
-    }
-
-    public Car(int id, int year, String brand, String model, String engineCapacity, String hp, String torque, String transmission) {
-        this.id = id;
-        this.year = year;
-        this.brand = brand;
-        this.model = model;
-        this.engineCapacity = engineCapacity;
-        this.hp = hp;
-        this.torque = torque;
-        this.transmission = transmission;
-    }
 }
