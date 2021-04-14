@@ -1,46 +1,67 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://thymeleaf.org">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Edit</title>
 </head>
 <body>
 <div align="center">
-    <form th:method="PUT" th:action="@{/cars/{id}(id=${car.getId()})}" th:object="${car}">
+    <form th:method="Patch" th:action="@{/cars/{id}(id=${car.getId()})}" th:object="${car}">
         <table border="0" cellpadding="5">
             <tr>
                 <td><label for="brand">Brand:</label></td>
-                <td><input type="text" th:field="*{brand}" id="brand"/></td>
+                <td>
+                    <input type="text" th:field="*{brand}" id="brand"/>
+                    <div style="color:red" th:if="${#fields.hasErrors('brand')}" th:errors="*{brand}">Name error</div>
+                </td>
             </tr>
 
             <tr>
                 <td><label for="model">Model:</label></td>
-                <td><input type="text" th:field="*{model}" id="model"/></td>
+                <td>
+                    <input type="text" th:field="*{model}" id="model"/>
+                    <div style="color:red" th:if="${#fields.hasErrors('model')}" th:errors="*{model}">Name error</div>
+                </td>
             </tr>
 
             <tr>
                 <td><label for="engine">Engine capacity:</label></td>
-                <td><input type="text" th:field="*{engineCapacity}" id="engine"/></td>
+                <td>
+                    <input type="text" th:field="*{engineCapacity}" id="engine"/>
+                    <div style="color:red" th:if="${#fields.hasErrors('engineCapacity')}" th:errors="*{engineCapacity}">Name error</div>
+                </td>
             </tr>
 
             <tr>
                 <td><label for="hp">HP:</label></td>
-                <td><input type="text" th:field="*{hp}" id="hp"/></td>
+                <td>
+                    <input type="text" th:field="*{hp}" id="hp"/>
+                    <div style="color:red" th:if="${#fields.hasErrors('hp')}" th:errors="*{hp}">Name error</div>
+                </td>
             </tr>
 
             <tr>
                 <td><label for="torque">Torque:</label></td>
-                <td><input type="text" th:field="*{torque}" id="torque"/></td>
+                <td>
+                    <input type="text" th:field="*{torque}" id="torque"/>
+                    <div style="color:red" th:if="${#fields.hasErrors('torque')}" th:errors="*{torque}">Name error</div>
+                </td>
             </tr>
 
             <tr>
                 <td><label for="transmission">Transmission:</label></td>
-                <td><input type="text" th:field="*{transmission}" id="transmission"/></td>
+                <td>
+                    <input type="text" th:field="*{transmission}" id="transmission"/>
+                    <div style="color:red" th:if="${#fields.hasErrors('transmission')}" th:errors="*{transmission}">Name error</div>
+                </td>
             </tr>
 
             <tr>
                 <td><label for="year">Year:</label></td>
-                <td><input type="text" th:field="*{year}" id="year"/></td>
+                <td>
+                    <input type="text" th:field="*{year}" id="year"/>
+                    <div style="color:red" th:if="${#fields.hasErrors('year')}" th:errors="*{year}">Name error</div>
+                </td>
             </tr>
 
             <tr>

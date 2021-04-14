@@ -5,7 +5,10 @@ import com.dimon.cars.models.Car;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/cars")
@@ -29,7 +32,11 @@ public class CarsController {
     }
 
     @PostMapping()
-    public String create(@ModelAttribute("car") Car car){
+    public String create(@ModelAttribute("car") @Valid Car car,
+                         BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            return "cars/new";
+        }
         carDAO.save(car);
         return "redirect:/cars/index";
     }
@@ -40,8 +47,11 @@ public class CarsController {
         return "cars/edit";
     }
 
-    @PutMapping("/{id}")
-    public String update(@ModelAttribute("car") Car car, @PathVariable("id") int id){
+    @PatchMapping("/{id}")
+    public String update(@ModelAttribute("car") @Valid Car car,BindingResult bindingResult, @PathVariable("id") int id){
+        if(bindingResult.hasErrors()){
+            return "cars/edit";
+        }
         carDAO.update(id, car);
         return "redirect:/cars/index";
     }

@@ -13,9 +13,9 @@ public class CarDAO {
 
     {
         cars = new ArrayList<>();
-        cars.add(new Car(++CARS_COUNT, "2021", "Volkswagen", "Tiguan", "1.4", "150", "250", "6AMT"));
-        cars.add(new Car(++CARS_COUNT, "2012","Renault", "Fluence", "1.6", "110", "145", "4AT"));
-        cars.add(new Car(++CARS_COUNT, "2011", "Renault", "Logan", "1.6", "84", "124", "6MT"));
+        cars.add(new Car(++CARS_COUNT, 2021, "Volkswagen", "Tiguan", "1.4", "150", "250", "6AMT"));
+        cars.add(new Car(++CARS_COUNT, 2012,"Renault", "Fluence", "1.6", "110", "145", "4AT"));
+        cars.add(new Car(++CARS_COUNT, 2011, "Renault", "Logan", "1.6", "84", "124", "6MT"));
     }
 
     public List<Car> index(){
@@ -43,7 +43,7 @@ public class CarDAO {
     }
 
     public void delete(int id){
-        cars.remove(id);
+        cars.remove(id-1);
     }
 
 }
