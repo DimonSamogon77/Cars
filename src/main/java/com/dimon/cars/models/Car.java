@@ -35,6 +35,9 @@ public class Car {
     @Max(value = 2021, message = "Car can`t have year more than 2021")
     private int year;
 
+    public Car() {
+    }
+
     public Car(int id, int year, String brand, String model, String engineCapacity, String hp, String torque, String transmission) {
         this.id = id;
         this.year = year;

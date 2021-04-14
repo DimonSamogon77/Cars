@@ -3,9 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Edit</title>
+    <style>
+        html, body{
+            width: 100%;
+        }
+        .main{
+            text-align: center;
+            margin: auto;
+            width: 500px;
+        }
+    </style>
 </head>
 <body>
-<div>
+<div class="main">
     <form th:method="Patch" th:action="@{/cars/{id}(id=${car.getId()})}" th:object="${car}">
         <table>
             <tr>

@@ -3,10 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>New car</title>
-
+    <style>
+        html, body{
+            width: 100%;
+        }
+        .main{
+            text-align: center;
+            margin: auto;
+            width: 500px;
+        }
+    </style>
 </head>
 <body>
-<div>
+<div class="main">
     <form th:method="POST" th:action="@{/cars}" th:object="${car}">
         <table>
             <tr>
@@ -70,7 +79,6 @@
             </tr>
         </table>
     </form>
-
 </div>
 </body>
 </html>
