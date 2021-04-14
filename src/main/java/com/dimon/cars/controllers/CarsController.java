@@ -13,7 +13,7 @@ import javax.validation.Valid;
 @Controller
 @RequestMapping("/cars")
 public class CarsController {
-    private CarDAO carDAO;
+    private final CarDAO carDAO;
 
     @Autowired
     public CarsController(CarDAO carDAO) {
