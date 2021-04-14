@@ -5,9 +5,9 @@
     <title>Edit</title>
 </head>
 <body>
-<div align="center">
+<div>
     <form th:method="Patch" th:action="@{/cars/{id}(id=${car.getId()})}" th:object="${car}">
-        <table border="0" cellpadding="5">
+        <table>
             <tr>
                 <td><label for="brand">Brand:</label></td>
                 <td>

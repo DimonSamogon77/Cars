@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>New car</title>
+
 </head>
 <body>
-<div align="center">
+<div>
     <form th:method="POST" th:action="@{/cars}" th:object="${car}">
-        <table border="0" cellpadding="5">
+        <table>
             <tr>
                 <td><label for="brand">Brand:</label></td>
                 <td>
