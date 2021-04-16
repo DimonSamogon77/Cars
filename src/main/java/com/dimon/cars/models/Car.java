@@ -10,7 +10,6 @@ import javax.validation.constraints.NotEmpty;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
 @ToString
 @Entity
@@ -50,4 +49,6 @@ public class Car {
     @Column(name = "year")
     private int year;
 
+    public Car() {
+    }
 }
